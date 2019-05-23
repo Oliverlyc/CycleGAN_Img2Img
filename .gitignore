@@ -2,3 +2,4 @@
 __pycache__/
 origin_data/
 weights/
+yiban.py

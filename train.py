@@ -154,9 +154,9 @@ def train(epochs=100, batch_size=1):
             #从缓存区读取图片
             _fake_X = fake_X_pool.action(tmp_fake_X)
             _fake_Y = fake_Y_pool.action(tmp_fake_Y)
-            if epoch:
-                save_image('fake_X_'+str(epoch), _fake_X[0])
-                save_image('fake_Y_'+str(epoch), _fake_Y[0])
+            if batch_i %2 == 0:
+                save_image('fake_X_'+str(epoch)+'_'+str(batch_i), _fake_X[0])
+                save_image('fake_Y_'+str(epoch)+'_'+str(batch_i), _fake_Y[0])
             _netG_loss = netG_train.train_on_batch([imgs_X, imgs_Y], target_label)
             netD_X_loss = netD_X_train.train_on_batch([imgs_X, _fake_X], target_label)
             netD_Y_loss = netD_Y_train.train_on_batch([imgs_Y, _fake_Y], target_label)
